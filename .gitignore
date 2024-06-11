@@ -4,3 +4,6 @@
 !/wordpress/wp-content/themes
 /wordpress/wp-content/themes/*
 !/wordpress/wp-content/themes/alexandreurbain
+!/wordpress/wp-content/uploads
+/wordpress/wp-content/uploads/*
+!/wordpress/wp-content/uploads/2024
