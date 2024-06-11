@@ -1,0 +1,8 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+    <style>
+        .svg__background{fill:#a0f2c9}
+        .svg__logo{fill:#083a53}
+    </style>
+    <path class="svg__background" d="m0 0h512v512h-512z"/>
+    <path fill-rule="evenodd" class="svg__logo" d="m350.2 197.8l-183.9 136.7-5.3-39 97.3-52.5c-3.3-8.1-6.7-16.3-10-24.4-2.9 7-5.8 14.1-8.7 21.2l-43.1 23.2 36.5-85.6h31.6l21.5 50.7zm-19.1 136.7l0.1-0.1-60.8-61.5 26.5-19.3 34.4 80.9z"/>
+</svg>

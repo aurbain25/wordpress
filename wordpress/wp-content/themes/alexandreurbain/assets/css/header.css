@@ -1,0 +1,256 @@
+header {
+    position: relative;
+    background-color: var(--color-main);
+    color: var(--color-second);
+}
+
+.header__background {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    opacity: 0.05;
+    bottom: 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header__nav,
+.page__title {
+    position: relative;
+    z-index: 1;
+}
+
+.header__nav {
+    display: flex;
+
+    height: var(--header-height);
+    width: 100%;
+}
+
+.header__logo {
+    height: var(--header-height);
+    width: var(--header-height);
+    mask-image: var(--logo-url);
+    mask-size: 45%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    background-color: var(--color-second);
+}
+
+.header__nav .header__nav__mobile {
+    display: none;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: var(--header-height);
+    width: var(--header-height);
+    mask-image: url("/wp-content/themes/alexandreurbain/assets/images/icn-menu.svg");
+    mask-size: 45%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    background-color: var(--color-second);
+}
+
+body.menu-open .header__nav .header__nav__mobile {
+    mask-image: url("/wp-content/themes/alexandreurbain/assets/images/icn-close.svg");
+}
+
+#menu-menu-principal-fr,
+#menu-menu-principal-en,
+#menu-langues {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+    height: 100%;
+}
+
+.menu-menu-langue-container,
+.menu-menu-principal-fr-container,
+.menu-menu-principal-en-container {
+    flex: 1;
+}
+
+.menu-item {
+    list-style: none;
+    padding: 0 0.5em;
+    position: relative;
+}
+
+.menu-item a {
+    color: var(--color-second);
+    text-decoration: none;
+}
+
+.menu-item.current-menu-item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2.5em;
+    height: 2px;
+    background-color: var(--color-second);
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#menu-langues .menu-item:first-child::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-second);
+    position: absolute;
+    top: 0;
+    right: -1px;
+}
+
+.contrast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contrast::before {
+    content: '';
+    display: block;
+    height: var(--header-height);
+    width: var(--header-height);
+    mask-image: url("/wp-content/themes/alexandreurbain/assets/images/icn-contrat.svg");
+    mask-size: 45%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    background-color: var(--color-second);
+}
+
+.page__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6em 0;
+}
+
+.page__title__image {
+    height: 12em;
+    width: 12em;
+    border-radius: 12em;
+    border: 0.25em solid var(--color-second);
+    object-fit: cover;
+    object-position: top;
+}
+
+.page__title__text {
+    padding: 0 5em;
+    text-align: center;
+}
+
+.page__title__text h1 {
+    display: flex;
+    font-weight: inherit;
+    justify-content: center;
+}
+
+.page__title__text h1 span {
+    position: relative; 
+    width: 10em;
+    text-align: center;
+}
+
+.page__title__text h1 span:first-child::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-second);
+    position: absolute;
+    top: 0;
+    right: -1px;
+}
+
+@media screen and (max-width: 1024px) {
+    .page__title {
+        flex-direction: column;
+    }
+
+    .page__title__text h1 span {
+        width: auto;
+        padding: 0 0.5em;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .header__nav .header__logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .header__nav .menu-menu-principal-fr-container,
+    .header__nav .menu-menu-principal-en-container,
+    .header__nav .menu-langues-container,
+    .header__nav .contrast {
+        display: none;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    body.menu-open .header__nav {
+        height: 100vh;
+        width: 100vw;
+
+        flex-direction: column;
+        justify-content: center;
+        
+        background-color: var(--color-main);
+    }
+
+    
+    body.menu-open .header__nav .menu-menu-principal-fr-container,
+    body.menu-open .header__nav .menu-menu-principal-en-container,
+    body.menu-open .header__nav .menu-langues-container,
+    body.menu-open .header__nav .contrast {
+        width: 100vw;
+        flex: unset;
+        display: flex;
+    }
+
+    body.menu-open #menu-menu-principal-fr,
+    body.menu-open #menu-menu-principal-en {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    body.menu-open #menu-menu-principal-fr .menu-item,
+    body.menu-open #menu-menu-principal-en .menu-item {
+        margin: 0.5em;
+    }
+
+    body.menu-open #menu-langues {
+        margin: 0.5em;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header__nav .header__nav__mobile {
+        display: block;
+    }
+
+    .page__title__text h1 {
+        flex-direction: column;
+    }
+
+    .page__title__text h1 span {
+        padding: 0;
+    }
+
+    .page__title__text h1 span:first-child::after {
+        content: unset;
+    }
+}

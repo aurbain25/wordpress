@@ -1,0 +1,35 @@
+body {
+    padding-bottom: var(--footer-height);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    background-color: var(--color-main);
+
+    height: var(--footer-height);
+    width: 100%;
+}
+
+.footer__nav {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+    padding: 0 0.5em;
+}
+
+.footer__nav__item {
+    list-style: none;
+    padding: 0.5em;
+    color: var(--color-second);
+}
+
+.footer__copyright {
+    padding: 0 1em;
+    color: var(--color-second);
+}

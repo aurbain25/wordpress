@@ -1,0 +1,26 @@
+html {
+    /* Color Variable */
+    --color-blue: #083a53;
+    --color-green: #a0f2c9;
+
+    --color-main: var(--color-green);
+    --color-second: var(--color-blue);
+
+    --color-main2: var(--color-blue);
+    --color-second2: var(--color-green);
+
+    /* Size Variable */
+    --header-height: 5em;
+    --footer-height: 2em;
+
+    /* Fonts */
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+}
+
+body.darker {
+    --color-main: var(--color-blue);
+    --color-second: var(--color-green);
+    --color-main2: var(--color-green);
+    --color-second2: var(--color-blue);
+}
