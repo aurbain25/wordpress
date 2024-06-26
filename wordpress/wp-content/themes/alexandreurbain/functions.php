@@ -44,7 +44,7 @@ add_action('pre_get_posts', 'alexandreurbain_parse_request');
 
 function alexandreurbain_enqueue()
 {
-    $assetsDirectory = get_template_directory_uri() . '/assets/';
+    $assetsDirectory = get_template_directory_uri() . '/assets';
     $cssDirectory = $assetsDirectory . '/css/';
     $jsDirectory = $assetsDirectory . '/js/';
 
