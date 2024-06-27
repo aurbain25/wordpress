@@ -24,6 +24,11 @@
 
 .type-forms .post__form {
     margin-left: 2em;
+    padding: 1em 0;
+}
+
+.type-forms .post__form p {
+    margin: 0;
 }
 
 .type-forms .post__form::before {
@@ -42,16 +47,39 @@
     padding: 1em;
     width: calc(100% - 2em - 2px);
     margin-bottom: 1em;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .type-forms .post__form input[type="submit"] {
     background: var(--color-main);
     color: var(--color-second);
     width: 100%;
+    margin-bottom: 0;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 .type-forms .post__form br {
     display: none;
+}
+
+.type-forms .post__form .wpcf7 form .wpcf7-response-output {
+    border: 0;
+    text-align: center;
+    color: var(--color-error);
+    margin: 1em 0 0;
+}
+
+.type-forms .post__form .wpcf7 form.sent input[type="submit"] {
+    display: none;
+}
+
+.type-forms .post__form .wpcf7 form.sent .wpcf7-response-output {
+    color: var(--color-second);
+    background-color: var(--color-main);
+    padding: 1em;
+    margin: 0;
 }
 
 @media screen and (max-width: 1024px) {}

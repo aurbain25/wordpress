@@ -2,12 +2,11 @@ html {
     /* Color Variable */
     --color-blue: #083a53;
     --color-green: #a0f2c9;
+    --color-red: #ed4337;
 
     --color-main: var(--color-green);
     --color-second: var(--color-blue);
-
-    --color-main2: var(--color-blue);
-    --color-second2: var(--color-green);
+    --color-error: var(--color-red);
 
     /* Size Variable */
     --header-height: 5em;
@@ -21,6 +20,4 @@ html {
 body.darker {
     --color-main: var(--color-blue);
     --color-second: var(--color-green);
-    --color-main2: var(--color-green);
-    --color-second2: var(--color-blue);
 }
