@@ -85,7 +85,12 @@ body.menu-open .header__nav .header__nav__mobile {
     text-decoration: none;
 }
 
-.menu-item.current-menu-item::after {
+.menu-item .sub-menu {
+    display: none;
+}
+
+.menu-item.current-menu-item::after,
+.menu-item.current-menu-ancestor::after {
     content: '';
     display: block;
     position: absolute;

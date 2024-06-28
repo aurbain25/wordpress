@@ -22,7 +22,8 @@ function alexandreurbain_image_url($setting)
 add_filter('post_type_link', 'alexandreurbain_post_type_link', 10, 2);
 function alexandreurbain_post_type_link($data, $post)
 {
-    if ("forms" != $post->post_type) {
+
+    if (!in_array($post->post_type, ["forms", "list"])) {
         return $data;
     }
 
@@ -34,7 +35,7 @@ function alexandreurbain_post_type_link($data, $post)
 function alexandreurbain_parse_request($query)
 {
     if (!empty($query->query['name'])) {
-        $query->set('post_type', array('forms'));
+        $query->set('post_type', array('forms', 'realisation', 'list'));
     }
 }
 add_action('pre_get_posts', 'alexandreurbain_parse_request');
@@ -55,8 +56,8 @@ function alexandreurbain_enqueue()
     }
 
     global $wp_query;
-    $currentPostType = 'post-' . $wp_query->get_queried_object()->post_type;
-    wp_enqueue_style($currentPostType, $cssDirectory . $currentPostType . '.css');
+    $currentPostType = $wp_query->get_queried_object()->post_type;
+    wp_enqueue_style('post-' . $currentPostType, $cssDirectory . 'posts/' . $currentPostType . '.css');
 
     wp_enqueue_script('cdn_jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js');
     wp_enqueue_script('menu', $jsDirectory . 'menu.js', [], '1.0.0', ['strategy'  => 'defer']);
