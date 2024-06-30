@@ -1,5 +1,14 @@
 <?php
 
+function alexandreurbain_get_parent($itemArray)
+{
+    $menu_items = wp_get_nav_menu_items(3);
+    $current_item = current(wp_filter_object_list($menu_items, $itemArray));
+    $parent_item = current(wp_filter_object_list($menu_items, array('ID' => $current_item->menu_item_parent)));
+
+    return $parent_item;
+}
+
 function delete_post_link()
 {
     $css_class = 'post-delete-link';
@@ -13,10 +22,64 @@ function delete_post_link()
     echo '<a class="' . esc_attr($css_class) . '" href="' . esc_url($url) . '">' . $text . '</a>';
 }
 
-function alexandreurbain_image_url($setting)
+function alexandreurbain_breadcrumb()
+{
+    $title = get_the_title();
+
+    if (!is_front_page()) {
+        $parent_item = alexandreurbain_get_parent(['object_id' => get_queried_object_id()]);
+
+        while ($parent_item !== false) {
+            $title = '<a href="' . $parent_item->url . '">' . $parent_item->title . '</a>' . ' > ' . $title;
+            $parent_item = alexandreurbain_get_parent(['ID' => $parent_item->ID]);
+        }
+
+        $title = '<a href="' . get_home_url() . '">' . 'Accueil' . '</a>' . ' > ' . $title;
+
+        echo '<div class="breadcrumb">' . $title . '</div>';
+    }
+}
+
+add_shortcode('alexandreurbain_breadcrumb', 'alexandreurbain_breadcrumb');
+
+function alexandreurbain_title($before = '', $after = '', $display = true)
+{
+    $post = get_post();
+    $title = get_the_title();
+
+    if (strlen($title) === 0) {
+        return;
+    }
+
+    $title = $before . $title . $after;
+
+    if ($post->post_type == 'realisation') {
+        $parent_item = alexandreurbain_get_parent(['object_id' => get_queried_object_id()]);
+
+        while ($parent_item !== false) {
+            $title = $parent_item->title;
+            $parent_item = alexandreurbain_get_parent(['ID' => $parent_item->ID]);
+        }
+    }
+
+    if ($display) {
+        echo $title;
+    } else {
+        return $title;
+    }
+}
+
+function alexandreurbain_image_url($setting, $display = true)
 {
     $image = get_option($setting);
-    return wp_get_attachment_image_src($image, 'full')[0];
+    $url = wp_get_attachment_image_src($image, 'full')[0];
+
+
+    if ($display) {
+        echo $url;
+    } else {
+        return $url;
+    }
 }
 
 add_filter('post_type_link', 'alexandreurbain_post_type_link', 10, 2);
@@ -51,7 +114,7 @@ function alexandreurbain_enqueue()
 
     $defaultCss = ['reset', 'variables', 'header', 'toggle', 'footer'];
 
-    foreach($defaultCss as $css) {
+    foreach ($defaultCss as $css) {
         wp_enqueue_style($css, $cssDirectory . $css . '.css');
     }
 
@@ -64,8 +127,8 @@ function alexandreurbain_enqueue()
     wp_enqueue_script('cookie', $jsDirectory . 'cookie.js', [], '1.0.0', ['strategy'  => 'defer']);
     wp_enqueue_script('darker_mode', $jsDirectory . 'darker-mode.js', [], '1.0.0', ['strategy'  => 'defer']);
     wp_localize_script('darker_mode', 'favicon', array(
-        'darker' => alexandreurbain_image_url('site_icon'),
-        'lighter' => alexandreurbain_image_url('site_icon_lighter'),
+        'darker' => alexandreurbain_image_url('site_icon', false),
+        'lighter' => alexandreurbain_image_url('site_icon_lighter', false),
     ));
 }
 
@@ -78,7 +141,7 @@ function alexandreurbain_meta_title()
     if (is_front_page()) {
         $title = get_bloginfo('name');
     } else {
-        $title = the_title('', '', false) . ' | ' . get_bloginfo('name');
+        $title = alexandreurbain_title('', '', false) . ' | ' . get_bloginfo('name');
     }
 
     echo "<title>$title</title>";

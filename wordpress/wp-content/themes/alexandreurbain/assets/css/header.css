@@ -178,6 +178,19 @@ body.menu-open .header__nav .header__nav__mobile {
     right: -1px;
 }
 
+.breadcrumb {
+    /* margin: 1em 0em; */
+    margin: 1em 5em;
+    display: inline-block;
+    /* text-align: center; */
+    /* width: 100%; */
+    color: var(--color-main);
+}
+
+.breadcrumb a {
+    color: inherit;
+}
+
 @media screen and (max-width: 1024px) {
     .page__title {
         flex-direction: column;
@@ -189,7 +202,7 @@ body.menu-open .header__nav .header__nav__mobile {
     }
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 54em) {
     .header__nav .header__logo {
         position: absolute;
         top: 0;
@@ -258,5 +271,11 @@ body.menu-open .header__nav .header__nav__mobile {
 
     .page__title__text h1 span:first-child::after {
         content: unset;
+    }
+    
+    .breadcrumb {
+        margin: 1em 0em;
+        text-align: center;
+        width: 100%;
     }
 }

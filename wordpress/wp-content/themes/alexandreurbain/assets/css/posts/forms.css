@@ -43,9 +43,9 @@
 
 .type-forms .post__form input,
 .type-forms .post__form textarea {
-    border: 1px solid var(--color-main);
+    border: 2px solid var(--color-main);
     padding: 1em;
-    width: calc(100% - 2em - 2px);
+    width: calc(100% - 2em - 4px);
     margin-bottom: 1em;
     font-family: inherit;
     font-size: inherit;

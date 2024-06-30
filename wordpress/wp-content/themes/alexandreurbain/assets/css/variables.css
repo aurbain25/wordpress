@@ -4,6 +4,9 @@ html {
     --color-green: #a0f2c9;
     --color-red: #ed4337;
 
+    --color-background: #000;
+    --color-text: #fff;
+
     --color-main: var(--color-green);
     --color-second: var(--color-blue);
     --color-error: var(--color-red);
@@ -17,7 +20,14 @@ html {
     font-size: 16px;
 }
 
+body, input, textarea {
+    background-color: var(--color-second);
+    color: var(--color-main);
+}
+
 body.darker {
     --color-main: var(--color-blue);
     --color-second: var(--color-green);
+    /* --color-background: #fff;
+    --color-text: #000; */
 }

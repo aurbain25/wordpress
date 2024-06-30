@@ -33,13 +33,14 @@
             </div>
         </div>
         <div class="page__title">
-            <img class="page__title__image" src="<?php echo alexandreurbain_image_url('avatar') ?>" alt="">
+            <img class="page__title__image" src="<?php alexandreurbain_image_url('avatar') ?>" alt="">
             <div class="page__title__text">
                 <h1>
-                    <span><?php the_title(); ?></span>
+                    <span><?php alexandreurbain_title(); ?></span>
                     <span><?php bloginfo('name'); ?></span>
                 </h1>
                 <div class="slogan"><?php bloginfo('description'); ?></div>
             </div>
         </div>
     </header>
+    <?php do_shortcode('[alexandreurbain_breadcrumb]'); ?>
