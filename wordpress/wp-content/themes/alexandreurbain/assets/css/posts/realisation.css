@@ -1,0 +1,25 @@
+.realisation {
+    display: flex;
+    justify-content: center;
+}
+
+.realisation .image,
+.realisation .content {
+    width: 30em;
+    margin: 1em;
+    border: 2px solid var(--color-main);
+    color: var(--color-main);
+    
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+.realisation .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+
+    text-align: center;
+}
